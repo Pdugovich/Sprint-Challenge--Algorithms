@@ -96,9 +96,91 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        self.swap_item()
+        for max_reps in range(len(self._list)//2):
+            for num in range(len(self._list)):
+                if self.can_move_right() == True:
+                    self.move_right()
+                    if self.compare_item() ==1:
+                        pass
+                    elif self.compare_item() ==0:
+                        pass
+                    else:
+                        self.swap_item()
+                else:
+                    if self.compare_item() == -1:
+                        pass
+                    elif self.compare_item() == 0:
+                        pass
+                    else: self.swap_item()
+            for num in range(len(self._list)):
+                if self.can_move_left() == True:
+                    self.move_left()
+                    if self.compare_item() == -1:
+                        pass
+                    elif self.compare_item() ==0:
+                        pass
+                    else:
+                        self.swap_item()
+                else:
+                    if self.compare_item() ==1:
+                        pass
+                    elif self.compare_item() ==0:
+                        pass
+                    elif self.compare_item == None:
+                        self.swap_item()
+                    else:
+                        self.swap_item()
+        if self._item != None:
+            self.swap_item()
 
+"""
+UNDERSTAND:
+
+I need to direct this robot to sort the items in a list. 
+
+It can only pick up an item, move left or right, compare the item its holding to the item in front of it,
+and swap items
+
+Here are the steps:
+
+Pick up the first item
+
+Move to the right until it gets to the end of the list
+
+Each time it moves:
+
+compare the item it's holding to the item in front of it
+
+If the item it's holding is larger (==1), move on
+
+If the item it's holding is smaller (==-1), swap it
+
+Once you get to the end, that item is the largest.
+
+At that point, the item you're holding is at least smaller than the largest item,
+
+Move to the left until you get to the start of the list
+
+Each time it moves:
+
+compare the item it's holding to the item in front of it
+
+If the item it's holding is larger (==1), swap it
+
+If the item it's holding is smaller (==-1), move on
+
+Once you get to the beginning, that item is the smallest
+
+At this point, the first and last items in the list are sorted,
+
+so, move to the right 1, then repeat the process, but only continue until len(l) -1
+
+
+This looks like the perfect usecase for recursion. 
+
+The recursion would be smething like:
+"""
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
